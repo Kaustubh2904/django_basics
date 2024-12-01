@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Chai page
+{% endblock %}
+
+{% block content %}
+<h1>All chai is found here </h1>
+
+<div class="grid grid-cols-3 gap-4 m-4">
+    {% for chai in chais  %}
+    <div  class="bg-blue-950 p-5 rounded">
+        <img class="rounded" src="{{chai.image.url}}" alt="">
+        <h3 class= "text-2xl font-bold">{{chai.name}}</h3>
+        <a href="{% url "chai_detail" chai.id %}"> {% comment %}# This is the link to the chai detail page {% endcomment %}
+            <button
+            type="button"
+            class="inine-flex items-centre w-[100%]justify-centre px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+            >
+                {{chai.type}} - {{chai.id}}
+            </button>
+        </a>
+    </div>
+
+    {% endfor %}
+</div>
+    
+{% endblock %}
+
